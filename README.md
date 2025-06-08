@@ -1,73 +1,41 @@
-# Welcome to your Lovable project
+# Bem vindo ao meu projeto!
 
-## Project info
+## Projeto descrisão
 
-**URL**: https://lovable.dev/projects/14f5ae26-d389-4625-b595-423361a0dccf
+Este projeto foi desenvolvido para o desafio da empresa [Daniell - DmCode Solutions ](https://www.linkedin.com/company/daniell-dmcode-solutions/)
 
-## How can I edit this code?
-
-There are several ways of editing your application.
-
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/14f5ae26-d389-4625-b595-423361a0dccf) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
+## Tecnologias utilizadas
 
 - Vite
-- TypeScript
 - React
-- shadcn-ui
-- Tailwind CSS
+- Typescript
+- TailwindCSS
 
-## How can I deploy this project?
+## Como executar o projeto
 
-Simply open [Lovable](https://lovable.dev/projects/14f5ae26-d389-4625-b595-423361a0dccf) and click on Share -> Publish.
+### Pré-requisitos
 
-## Can I connect a custom domain to my Lovable project?
+Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
+[Git](https://git-scm.com), [Node.js](https://nodejs.org/en/), [NPM](https://www.npmjs.com/), [VITE](https://vitejs.dev/)
+Além disto é bom ter um editor para trabalhar com o código como [VSCode](https://code.visualstudio.com/)
 
-Yes, you can!
+### 🎲 Rodando o Front End (Vite)
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+```bash
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+# Clone este repositório
+$ git clone <https://github.com/DanniellMendss/DanniellPage-Dmcode>
+# Acesse a pasta do projeto no terminal/cmd
+$ cd DanniellPage-Dmcode
+# Instale as dependências
+$ npm install
+# Execute a aplicação em modo de desenvolvimento
+$ npm run dev
+# O servidor inciará na porta:3000 - acesse <http://localhost:3000>
+```
+
+## Autor
+
+Daniel Mendes
+[Linkedin](https://www.linkedin.com/in/daniel-mendes-439151251/)
+[Instagram](https://www.instagram.com/daniel_mendes_01/)
