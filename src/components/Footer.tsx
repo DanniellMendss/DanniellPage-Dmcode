@@ -1,41 +1,50 @@
-
-import React from 'react';
-import { ArrowUp, Heart, Code, Github, Linkedin, Instagram, ExternalLink, Coffee } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import React from "react";
+import {
+  ArrowUp,
+  Heart,
+  Code,
+  Github,
+  Linkedin,
+  Instagram,
+  ExternalLink,
+  Coffee,
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   const socialLinks = [
-    { 
-      icon: Github, 
-      href: 'https://github.com/danielmendes', 
-      label: 'GitHub',
-      color: 'hover:text-neon-blue'
+    {
+      icon: Github,
+      href: "https://github.com/DanniellMendss",
+      label: "GitHub",
+      color: "hover:text-neon-blue",
     },
-    { 
-      icon: Linkedin, 
-      href: 'https://linkedin.com/in/danielmendes', 
-      label: 'LinkedIn',
-      color: 'hover:text-neon-purple'
+    {
+      icon: Linkedin,
+      href: "https://www.linkedin.com/in/daniel-mendes-dev/",
+      label: "LinkedIn",
+      color: "hover:text-neon-purple",
     },
-    { 
-      icon: Instagram, 
-      href: 'https://instagram.com/daniel.dev', 
-      label: 'Instagram',
-      color: 'hover:text-neon-green'
-    }
+    {
+      icon: Instagram,
+      href: "https://www.instagram.com/dmcodesolutions",
+      label: "Instagram",
+      color: "hover:text-neon-green",
+    },
   ];
 
   const quickLinks = [
-    { name: 'Sobre', href: '#about' },
-    { name: 'Projetos', href: '#projects' },
-    { name: 'Skills', href: '#skills' },
-    { name: 'Contato', href: '#contact' }
+    { name: "Início", href: "#home" },
+    { name: "Sobre", href: "#about" },
+    { name: "Projetos", href: "#projects" },
+    { name: "Skills", href: "#skills" },
+    { name: "Contato", href: "#contact" },
   ];
 
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
@@ -52,23 +61,27 @@ const Footer = () => {
           <div className="md:col-span-2">
             <div className="flex items-center space-x-2 mb-4">
               <div className="text-2xl font-bold font-space-mono gradient-text">
-                Daniel.dev()
+                Daniel - DmCode Solutions
               </div>
             </div>
             <p className="text-gray-400 mb-4 leading-relaxed max-w-md">
-              Desenvolvedor Front-end apaixonado por criar experiências digitais incríveis. 
-              Fundador da DmCode Solutions, sempre em busca de inovação e excelência.
+              Desenvolvedor Front-end apaixonado por criar experiências digitais
+              incríveis. Fundador da DmCode Solutions, sempre em busca de
+              inovação e excelência.
             </p>
-            
+
             {/* Company Link */}
-            <a 
-              href="https://dmcodesolutions.com" 
-              target="_blank" 
+            <a
+              href="https://dmcodesolutions.com"
+              target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center space-x-2 text-neon-purple hover:text-neon-blue transition-colors duration-300 group"
             >
               <span className="font-semibold">DmCode Solutions</span>
-              <ExternalLink size={16} className="group-hover:transform group-hover:scale-110 transition-transform duration-300" />
+              <ExternalLink
+                size={16}
+                className="group-hover:transform group-hover:scale-110 transition-transform duration-300"
+              />
             </a>
           </div>
 
@@ -78,7 +91,7 @@ const Footer = () => {
             <ul className="space-y-2">
               {quickLinks.map((link) => (
                 <li key={link.name}>
-                  <a 
+                  <a
                     href={link.href}
                     className="text-gray-400 hover:text-neon-blue transition-colors duration-300 text-sm"
                   >
@@ -93,10 +106,10 @@ const Footer = () => {
           <div>
             <h3 className="text-white font-semibold mb-4">Conecte-se</h3>
             <div className="space-y-3 mb-4">
-              <p className="text-gray-400 text-sm">daniel@dmcodesolutions.com</p>
-              <p className="text-gray-400 text-sm">São Paulo, Brasil</p>
+              <p className="text-gray-400 text-sm">dmcodesolutions@gmail.com</p>
+              <p className="text-gray-400 text-sm">Curvelo, Brasil</p>
             </div>
-            
+
             {/* Social Links */}
             <div className="flex space-x-3">
               {socialLinks.map((social) => (
@@ -122,7 +135,7 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
           {/* Copyright */}
           <div className="flex items-center space-x-2 text-gray-400 text-sm">
-            <span>© {currentYear} Daniel Mendes</span>
+            <span>© {currentYear} Daniel - DmCode Solutions</span>
             <span>•</span>
             <span>Desenvolvido com</span>
             <Heart size={14} className="text-red-500 animate-pulse" />

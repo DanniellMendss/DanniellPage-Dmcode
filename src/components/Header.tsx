@@ -1,6 +1,5 @@
-
-import React, { useState, useEffect } from 'react';
-import { Menu, X, Github, Linkedin, Instagram } from 'lucide-react';
+import React, { useState, useEffect } from "react";
+import { Menu, X, Github, Linkedin, Instagram } from "lucide-react";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -10,32 +9,47 @@ const Header = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const navItems = [
-    { name: 'Sobre', href: '#about' },
-    { name: 'Projetos', href: '#projects' },
-    { name: 'Skills', href: '#skills' },
-    { name: 'Contato', href: '#contact' }
+    { name: "Inicio", href: "#hero" },
+    { name: "Sobre", href: "#about" },
+    { name: "Projetos", href: "#projects" },
+    { name: "Skills", href: "#skills" },
+    { name: "Contato", href: "#contact" },
   ];
 
   const socialLinks = [
-    { icon: Github, href: 'https://github.com/danielmendes', label: 'GitHub' },
-    { icon: Linkedin, href: 'https://linkedin.com/in/danielmendes', label: 'LinkedIn' },
-    { icon: Instagram, href: 'https://instagram.com/daniel.dev', label: 'Instagram' }
+    {
+      icon: Github,
+      href: "https://github.com/DanniellMendss",
+      label: "GitHub",
+    },
+    {
+      icon: Linkedin,
+      href: "https://www.linkedin.com/in/daniel-mendes-dev/",
+      label: "LinkedIn",
+    },
+    {
+      icon: Instagram,
+      href: "https://www.instagram.com/dmcodesolutions/",
+      label: "Instagram",
+    },
   ];
 
   return (
-    <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-      isScrolled ? 'glass shadow-neon-blue/20' : 'bg-transparent'
-    }`}>
+    <header
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+        isScrolled ? "glass shadow-neon-blue/20" : "bg-transparent"
+      }`}
+    >
       <nav className="container-custom mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="text-2xl font-bold font-space-mono">
-            <span className="gradient-text">Daniel.dev()</span>
+            <span className="gradient-text">Daniel - DmCode Solutions</span>
           </div>
 
           {/* Desktop Navigation */}
@@ -77,9 +91,13 @@ const Header = () => {
         </div>
 
         {/* Mobile Menu */}
-        <div className={`md:hidden absolute top-full left-0 w-full glass transition-all duration-300 ${
-          isMobileMenuOpen ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform -translate-y-4 pointer-events-none'
-        }`}>
+        <div
+          className={`md:hidden absolute top-full left-0 w-full glass transition-all duration-300 ${
+            isMobileMenuOpen
+              ? "opacity-100 transform translate-y-0"
+              : "opacity-0 transform -translate-y-4 pointer-events-none"
+          }`}
+        >
           <div className="p-4 space-y-4">
             {navItems.map((item) => (
               <a

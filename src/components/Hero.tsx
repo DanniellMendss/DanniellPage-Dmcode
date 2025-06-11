@@ -1,12 +1,12 @@
-
-import React, { useState, useEffect } from 'react';
-import { Download, Mail, ExternalLink, Sparkles, Code2 } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import React, { useState, useEffect } from "react";
+import { Download, Mail, ExternalLink, Sparkles, Code2 } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import Imagelogo from "../Img/danniell1.png";
 
 const Hero = () => {
-  const [typewriterText, setTypewriterText] = useState('');
-  const fullText = 'Transformo ideias em experiências digitais.';
-  
+  const [typewriterText, setTypewriterText] = useState("");
+  const fullText = "Transformo ideias em experiências digitais.";
+
   useEffect(() => {
     let index = 0;
     const timer = setInterval(() => {
@@ -24,8 +24,11 @@ const Hero = () => {
   const motivationalMessages = [
     "Código é arte, arte é código",
     "Inovação através da tecnologia",
-    "Criando o futuro digital",
-    "Where ideas become reality"
+    "Transformando linhas de código em experiências incríveis",
+    "Código é poesia, cada linha é uma nota",
+    "Código é a linguagem da inovação",
+    "Tudo parece impossível até que seja feito - Nelson Mandela",
+    "Where ideas become reality",
   ];
 
   const [currentMessage, setCurrentMessage] = useState(0);
@@ -39,16 +42,16 @@ const Hero = () => {
   }, []);
 
   const scrollToProjects = () => {
-    const projectsSection = document.getElementById('projects');
+    const projectsSection = document.getElementById("projects");
     if (projectsSection) {
-      projectsSection.scrollIntoView({ behavior: 'smooth' });
+      projectsSection.scrollIntoView({ behavior: "smooth" });
     }
   };
 
   const scrollToContact = () => {
-    const contactSection = document.getElementById('contact');
+    const contactSection = document.getElementById("contact");
     if (contactSection) {
-      contactSection.scrollIntoView({ behavior: 'smooth' });
+      contactSection.scrollIntoView({ behavior: "smooth" });
     }
   };
 
@@ -58,11 +61,26 @@ const Hero = () => {
       <div className="absolute inset-0">
         <div className="absolute top-32 left-10 w-3 h-3 bg-neon-blue rounded-full animate-float opacity-60"></div>
         <div className="absolute top-48 right-20 w-2 h-2 bg-neon-purple rounded-full animate-bounce-subtle opacity-80"></div>
-        <div className="absolute bottom-40 left-1/4 w-4 h-4 bg-neon-green rounded-full animate-float opacity-40" style={{ animationDelay: '1s' }}></div>
-        <div className="absolute top-1/3 right-1/3 w-2 h-2 bg-neon-blue rounded-full animate-bounce-subtle opacity-70" style={{ animationDelay: '2s' }}></div>
-        <div className="absolute bottom-32 right-10 w-3 h-3 bg-neon-purple rounded-full animate-float opacity-50" style={{ animationDelay: '1.5s' }}></div>
-        <div className="absolute top-1/4 left-1/3 w-1 h-1 bg-neon-green rounded-full animate-bounce-subtle opacity-60" style={{ animationDelay: '3s' }}></div>
-        <div className="absolute bottom-1/4 left-20 w-2 h-2 bg-neon-blue rounded-full animate-float opacity-40" style={{ animationDelay: '2.5s' }}></div>
+        <div
+          className="absolute bottom-40 left-1/4 w-4 h-4 bg-neon-green rounded-full animate-float opacity-40"
+          style={{ animationDelay: "1s" }}
+        ></div>
+        <div
+          className="absolute top-1/3 right-1/3 w-2 h-2 bg-neon-blue rounded-full animate-bounce-subtle opacity-70"
+          style={{ animationDelay: "2s" }}
+        ></div>
+        <div
+          className="absolute bottom-32 right-10 w-3 h-3 bg-neon-purple rounded-full animate-float opacity-50"
+          style={{ animationDelay: "1.5s" }}
+        ></div>
+        <div
+          className="absolute top-1/4 left-1/3 w-1 h-1 bg-neon-green rounded-full animate-bounce-subtle opacity-60"
+          style={{ animationDelay: "3s" }}
+        ></div>
+        <div
+          className="absolute bottom-1/4 left-20 w-2 h-2 bg-neon-blue rounded-full animate-float opacity-40"
+          style={{ animationDelay: "2.5s" }}
+        ></div>
       </div>
 
       <div className="container-custom mx-auto px-6 text-center relative z-10 max-w-5xl">
@@ -71,8 +89,12 @@ const Hero = () => {
           <div className="relative">
             <div className="w-32 h-32 md:w-36 md:h-36 rounded-full bg-gradient-to-r from-neon-blue via-neon-purple to-neon-green p-1 animate-glow">
               <div className="w-full h-full rounded-full bg-dark-primary flex items-center justify-center relative overflow-hidden">
-                <span className="text-4xl md:text-5xl font-bold gradient-text relative z-10">DM</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-neon-blue/10 via-neon-purple/10 to-neon-green/10 animate-pulse"></div>
+                <img
+                  src={Imagelogo}
+                  alt="Avatar"
+                  className="w-full h-full object-cover rounded-full"
+                />
               </div>
             </div>
             <div className="absolute -top-2 -right-2 w-6 h-6 bg-neon-green rounded-full animate-bounce-subtle border-2 border-dark-primary flex items-center justify-center">
@@ -96,7 +118,9 @@ const Hero = () => {
         {/* Enhanced Main Heading with Typewriter Effect */}
         <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
           <span className="block mb-2 text-gray-300">Olá, eu sou</span>
-          <span className="gradient-text block mb-4 neon-text">Daniel Mendes</span>
+          <span className="gradient-text block mb-4 neon-text">
+            Daniel Mendes
+          </span>
           <span className="text-lg md:text-2xl lg:text-3xl text-gray-300 block font-light">
             {typewriterText}
             <span className="animate-pulse text-neon-blue ml-1">|</span>
@@ -105,40 +129,51 @@ const Hero = () => {
 
         {/* Enhanced Subtitle */}
         <p className="text-base md:text-lg lg:text-xl text-gray-400 mb-8 max-w-3xl mx-auto leading-relaxed">
-          Desenvolvedor Front-end apaixonado por criar interfaces modernas. 
+          Desenvolvedor Front-end apaixonado por criar interfaces modernas.
           <br className="hidden md:block" />
-          Explorando o universo Back-end e fundador da 
-          <span className="text-neon-purple font-semibold"> DmCode Solutions</span>
+          Explorando o universo Back-end e fundador da
+          <span className="text-neon-purple font-semibold">
+            {" "}
+            DmCode Solutions
+          </span>
         </p>
 
         {/* Enhanced Status Badge */}
         <div className="inline-flex items-center glass px-6 py-3 rounded-full mb-10 border border-neon-green/30 bg-neon-green/5">
           <div className="w-3 h-3 bg-neon-green rounded-full animate-pulse mr-3"></div>
-          <span className="text-sm md:text-base text-neon-green font-semibold">🚀 Em transição para Full Stack</span>
+          <span className="text-sm md:text-base text-neon-green font-semibold">
+            🚀 Em transição para Full Stack
+          </span>
         </div>
 
         {/* Enhanced CTA Buttons */}
         <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-          <Button 
-            size="lg" 
+          <Button
+            size="lg"
             className="bg-gradient-to-r from-neon-blue to-neon-purple hover:from-neon-purple hover:to-neon-pink transform hover:scale-110 transition-all duration-500 shadow-2xl hover:shadow-neon-blue/50 px-8 py-4 text-lg font-bold rounded-full relative overflow-hidden group"
             onClick={scrollToProjects}
           >
             <span className="relative z-10 flex items-center">
-              <ExternalLink className="mr-3 group-hover:animate-bounce-subtle" size={20} />
+              <ExternalLink
+                className="mr-3 group-hover:animate-bounce-subtle"
+                size={20}
+              />
               Ver Portfólio
             </span>
             <div className="absolute inset-0 bg-gradient-to-r from-neon-blue via-neon-purple to-neon-green opacity-0 group-hover:opacity-20 transition-opacity duration-500 rounded-full blur-xl"></div>
           </Button>
-          
-          <Button 
-            size="lg" 
-            variant="outline" 
+
+          <Button
+            size="lg"
+            variant="outline"
             className="border-2 border-neon-green text-neon-green hover:bg-neon-green hover:text-dark-primary transform hover:scale-110 transition-all duration-500 shadow-xl hover:shadow-neon-green/50 px-8 py-4 text-lg font-bold rounded-full relative overflow-hidden group"
             onClick={scrollToContact}
           >
             <span className="relative z-10 flex items-center">
-              <Mail className="mr-3 group-hover:animate-bounce-subtle" size={20} />
+              <Mail
+                className="mr-3 group-hover:animate-bounce-subtle"
+                size={20}
+              />
               Contato Rápido
             </span>
             <div className="absolute inset-0 bg-neon-green opacity-0 group-hover:opacity-10 transition-opacity duration-500 rounded-full"></div>
