@@ -1,10 +1,17 @@
-
-import React, { useState } from 'react';
-import { ArrowLeft, ExternalLink, Github, Filter, Calendar, Code2, Users } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
-import ScrollProgress from '@/components/ScrollProgress';
+import React, { useState } from "react";
+import {
+  ArrowLeft,
+  ExternalLink,
+  Github,
+  Filter,
+  Calendar,
+  Code2,
+  Users,
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import ScrollProgress from "@/components/ScrollProgress";
 import { projects } from "@/lib/projects";
 import { Helmet } from "react-helmet-async";
 
@@ -18,9 +25,12 @@ const AllProjects = () => {
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'Concluído': return 'text-neon-green';
-      case 'Em desenvolvimento': return 'text-neon-blue';
-      default: return 'text-gray-400';
+      case "Concluído":
+        return "text-neon-green";
+      case "Em desenvolvimento":
+        return "text-neon-blue";
+      default:
+        return "text-gray-400";
     }
   };
 
@@ -28,14 +38,29 @@ const AllProjects = () => {
     <>
       <Helmet>
         <title>Projetos | Daniel Mendes - DmCode Solutions</title>
-        <meta name="description" content="Veja todos os projetos desenvolvidos por Daniel Mendes, especialista em React, TypeScript e soluções digitais modernas." />
-        <meta property="og:title" content="Projetos | Daniel Mendes - DmCode Solutions" />
-        <meta property="og:description" content="Veja todos os projetos desenvolvidos por Daniel Mendes, especialista em React, TypeScript e soluções digitais modernas." />
+        <meta
+          name="description"
+          content="Veja todos os projetos desenvolvidos por Daniel Mendes, especialista em React, TypeScript e soluções digitais modernas."
+        />
+        <meta
+          property="og:title"
+          content="Projetos | Daniel Mendes - DmCode Solutions"
+        />
+        <meta
+          property="og:description"
+          content="Veja todos os projetos desenvolvidos por Daniel Mendes, especialista em React, TypeScript e soluções digitais modernas."
+        />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="/favicon.ico" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Projetos | Daniel Mendes - DmCode Solutions" />
-        <meta name="twitter:description" content="Veja todos os projetos desenvolvidos por Daniel Mendes, especialista em React, TypeScript e soluções digitais modernas." />
+        <meta
+          name="twitter:title"
+          content="Projetos | Daniel Mendes - DmCode Solutions"
+        />
+        <meta
+          name="twitter:description"
+          content="Veja todos os projetos desenvolvidos por Daniel Mendes, especialista em React, TypeScript e soluções digitais modernas."
+        />
         <meta name="twitter:image" content="/favicon.ico" />
       </Helmet>
       <div className="min-h-screen bg-dark-primary text-white overflow-x-hidden">
@@ -46,7 +71,10 @@ const AllProjects = () => {
           <section className="section-padding bg-gradient-to-br from-dark-primary via-dark-secondary to-dark-primary relative overflow-hidden">
             <div className="absolute inset-0 opacity-20">
               <div className="absolute top-20 left-10 w-32 h-32 bg-neon-blue rounded-full blur-3xl animate-float"></div>
-              <div className="absolute bottom-20 right-10 w-40 h-40 bg-neon-purple rounded-full blur-3xl animate-float" style={{ animationDelay: '1s' }}></div>
+              <div
+                className="absolute bottom-20 right-10 w-40 h-40 bg-neon-purple rounded-full blur-3xl animate-float"
+                style={{ animationDelay: "1s" }}
+              ></div>
             </div>
 
             <div className="container-custom mx-auto relative z-10">
@@ -67,25 +95,31 @@ const AllProjects = () => {
                 </h1>
                 <div className="w-32 h-1 bg-gradient-to-r from-neon-purple to-neon-green mx-auto mb-8"></div>
                 <p className="text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto">
-                  Explore minha jornada através dos projetos que desenvolvi ao longo da carreira
+                  Explore minha jornada através dos projetos que desenvolvi ao
+                  longo da carreira
                 </p>
               </div>
 
               {/* Stats */}
               <div className="grid md:grid-cols-3 gap-6 mb-12 max-w-4xl mx-auto">
                 <div className="glass p-6 rounded-xl border border-neon-blue/30 text-center">
-                  <div className="text-3xl font-bold text-neon-blue mb-2">{projects.length}</div>
+                  <div className="text-3xl font-bold text-neon-blue mb-2">
+                    {projects.length}
+                  </div>
                   <p className="text-gray-400">Projetos Totais</p>
                 </div>
                 <div className="glass p-6 rounded-xl border border-neon-green/30 text-center">
                   <div className="text-3xl font-bold text-neon-green mb-2">
-                    {projects.filter(p => p.status === 'Concluído').length}
+                    {projects.filter((p) => p.status === "Concluído").length}
                   </div>
                   <p className="text-gray-400">Concluídos</p>
                 </div>
                 <div className="glass p-6 rounded-xl border border-neon-purple/30 text-center">
                   <div className="text-3xl font-bold text-neon-purple mb-2">
-                    {projects.filter(p => p.status === 'Em desenvolvimento').length}
+                    {
+                      projects.filter((p) => p.status === "Em desenvolvimento")
+                        .length
+                    }
                   </div>
                   <p className="text-gray-400">Em Desenvolvimento</p>
                 </div>
@@ -127,7 +161,7 @@ const AllProjects = () => {
                     <div className="relative overflow-hidden">
                       <img
                         src={project.image}
-                        alt={project.title || 'Imagem do projeto'}
+                        alt={project.title || "Imagem do projeto"}
                         loading="lazy"
                         className="w-full h-48 object-cover transition-transform duration-500 focus:outline-none focus:ring-2 focus:ring-neon-blue"
                         tabIndex={0}
@@ -138,7 +172,11 @@ const AllProjects = () => {
                         </div>
                       )}
                       <div className="absolute top-4 right-4 glass px-2 py-1 rounded-full">
-                        <span className={`text-xs font-medium ${getStatusColor(project.status || '')}`}>
+                        <span
+                          className={`text-xs font-medium ${getStatusColor(
+                            project.status || ""
+                          )}`}
+                        >
                           {project.status}
                         </span>
                       </div>
@@ -184,7 +222,7 @@ const AllProjects = () => {
                         <Button
                           size="sm"
                           className="flex-1 bg-gradient-to-r from-neon-blue to-neon-purple hover:from-neon-purple hover:to-neon-pink text-xs"
-                          onClick={() => window.open(project.liveUrl, '_blank')}
+                          onClick={() => window.open(project.liveUrl, "_blank")}
                         >
                           <ExternalLink size={14} className="mr-1" />
                           Ver Projeto

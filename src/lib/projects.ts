@@ -22,7 +22,7 @@ import Projeto5 from "@/Img/Projeto5.png";
 import Projeto6 from "@/Img/Projeto6.png";
 import Projeto7 from "@/Img/Projeto7.png";
 import Projeto8 from "@/Img/Projeto8.png";
-import Projeto9 from "@/Img/Projeto9.png";
+import Projeto9 from "@/Img/Projeto9.jpeg";
 
 export const projects: Project[] = [
   {
@@ -109,7 +109,6 @@ export const projects: Project[] = [
     status: "Concluído",
     duration: "2 meses",
   },
-  /*
   {
     id: 7,
     title: "Calculadora Financeira",
@@ -152,5 +151,4 @@ export const projects: Project[] = [
     status: "Concluído",
     duration: "3 semanas",
   },
-  */
 ];
