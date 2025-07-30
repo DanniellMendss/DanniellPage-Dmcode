@@ -64,7 +64,7 @@ const Hero = () => {
     // Seção principal do Hero
     <section
       id="hero"
-      className="h-screen flex items-center justify-center relative overflow-hidden pt-24 px-4 sm:px-6"
+      className="h-screen flex items-center justify-center relative overflow-hidden pt-24"
     >
       {/* Background decorativo animado (bolinhas coloridas) */}
       <div className="absolute inset-0">
@@ -93,10 +93,10 @@ const Hero = () => {
       </div>
 
       {/* Container centralizado do conteúdo */}
-      <div className="container-custom mx-auto relative z-10 max-w-5xl w-full">
-        <div className="flex flex-col-reverse md:flex-row items-center justify-between gap-8 md:gap-16">
+      <div className="container-custom mx-auto px-6 relative z-10 max-w-5xl">
+        <div className="flex flex-col-reverse md:flex-row items-center justify-between gap-10 md:gap-16">
           {/* Coluna Esquerda: Texto e botões */}
-          <div className="flex-1 text-center md:text-left px-2">
+          <div className="flex-1 text-center md:text-left">
             {/* Mensagem motivacional animada */}
             <div className="mb-6 h-8">
               <div className="glass px-6 py-2 rounded-full border border-neon-blue/30 inline-block">
@@ -105,24 +105,19 @@ const Hero = () => {
                 </p>
               </div>
             </div>
-
-            {/* Espaçamento extra */}
-            <div className="mb-8" />
-
             {/* Título principal */}
-            <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-6 leading-snug">
+            <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
               <span className="block mb-2 text-gray-300">Olá, eu sou</span>
               <span className="gradient-text block mb-4 neon-text">
                 Daniel Mendes
               </span>
-              <span className="text-base sm:text-lg md:text-2xl lg:text-3xl text-gray-300 block font-light">
+              <span className="text-lg md:text-2xl lg:text-3xl text-gray-300 block font-light">
                 {typewriterText}
                 <span className="animate-pulse text-neon-blue ml-1">|</span>
               </span>
             </h1>
-
             {/* Descrição */}
-            <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-400 mb-8 max-w-3xl leading-relaxed">
+            <p className="text-base md:text-lg lg:text-xl text-gray-400 mb-8 max-w-3xl leading-relaxed">
               Desenvolvedor Front-end apaixonado por criar interfaces modernas.
               <br className="hidden md:block" />
               Explorando o universo Back-end e fundador da
@@ -131,7 +126,6 @@ const Hero = () => {
                 DmCode Solutions
               </span>
             </p>
-
             {/* Badge de status */}
             <div className="inline-flex items-center glass px-6 py-3 rounded-full mb-10 border border-neon-green/30 bg-neon-green/5">
               <div className="w-3 h-3 bg-neon-green rounded-full animate-pulse mr-3"></div>
@@ -139,9 +133,8 @@ const Hero = () => {
                 🚀 Em transição para Full Stack
               </span>
             </div>
-
             {/* Botões de ação */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start items-center px-4 sm:px-0">
+            <div className="flex flex-col sm:flex-row gap-6 justify-center md:justify-start items-center">
               <Button
                 size="lg"
                 className="bg-gradient-to-r from-neon-blue to-neon-purple hover:from-neon-purple hover:to-neon-pink transform hover:scale-110 transition-all duration-500 shadow-2xl hover:shadow-neon-blue/50 px-8 py-4 text-lg font-bold rounded-full relative overflow-hidden group focus:outline-none focus-visible:ring-2 focus-visible:ring-neon-blue"
@@ -177,13 +170,12 @@ const Hero = () => {
               </Button>
             </div>
           </div>
-
           {/* Coluna Direita: Avatar com borda e ícones decorativos */}
-          <div className="flex-1 flex justify-center md:justify-end mb-8 md:mb-0 px-2">
+          <div className="flex-1 flex justify-center md:justify-end mb-8 md:mb-0">
             <div className="relative">
               {/* Avatar com borda personalizada */}
               <div
-                className="w-48 h-48 sm:w-64 sm:h-64 md:w-96 md:h-96 lg:w-[32rem] lg:h-[32rem] rounded-full bg-dark-primary flex items-center justify-center relative overflow-hidden border-4 shadow-xl"
+                className="w-72 h-72 md:w-96 md:h-96 lg:w-[32rem] lg:h-[32rem] rounded-full bg-dark-primary flex items-center justify-center relative overflow-hidden border-4 shadow-xl"
                 style={{ borderColor: "#D1D5DB" }}
               >
                 <img
@@ -192,7 +184,6 @@ const Hero = () => {
                   className="w-full h-full object-cover rounded-full"
                 />
               </div>
-
               {/* Ícones decorativos ao redor do avatar */}
               <div className="absolute -top-2 -right-2 w-6 h-6 bg-neon-green rounded-full animate-bounce-subtle border-2 border-dark-primary flex items-center justify-center">
                 <Code2 size={12} className="text-dark-primary" />

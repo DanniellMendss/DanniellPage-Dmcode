@@ -43,20 +43,19 @@ const Header = () => {
     <header
       className={`fixed top-0 w-full z-50 transition-all duration-300 pt-3 ${
         isScrolled ? "glass shadow-neon-blue/20" : "bg-transparent"
-      }`}
-      // Aqui adicionamos um margin-bottom para espaçar o conteúdo abaixo do header
-      style={{ marginBottom: "1.5rem" }}
+      }
+        `}
     >
       <nav className="container-custom mx-auto px-2 xs:px-4 py-3 xs:py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="text-2xl xs:text-3xl font-bold font-space-mono">
-            <span className="gradient-text">DmCode Solutions</span>
+            <span className="gradient-text">Daniel - DmCode Solutions</span>
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-4 xs:space-x-8">
-            {navItems.map((item) => (
+            {navItems.map((item, idx) => (
               <a
                 key={item.name}
                 href={item.href}
@@ -72,22 +71,19 @@ const Header = () => {
 
           {/* Social Links */}
           <div className="hidden md:flex items-center space-x-2 xs:space-x-4">
-            {socialLinks.map((social) => {
-              const Icon = social.icon;
-              return (
-                <a
-                  key={social.label}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-neon-blue transition-all duration-300 transform hover:scale-110 focus:outline-none focus-visible:ring-2 focus-visible:ring-neon-blue p-1 xs:p-2 rounded"
-                  aria-label={social.label}
-                  tabIndex={0}
-                >
-                  <Icon size={24} className="text-[24px]" />
-                </a>
-              );
-            })}
+            {socialLinks.map((social) => (
+              <a
+                key={social.label}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-neon-blue transition-all duration-300 transform hover:scale-110 focus:outline-none focus-visible:ring-2 focus-visible:ring-neon-blue p-1 xs:p-2 rounded"
+                aria-label={social.label}
+                tabIndex={0}
+              >
+                <social.icon size={24} className="xs:size-[28px]" />
+              </a>
+            ))}
           </div>
 
           {/* Mobile Menu Button */}
@@ -109,7 +105,7 @@ const Header = () => {
           }`}
         >
           <div className="p-4 space-y-2 xs:space-y-4">
-            {navItems.map((item) => (
+            {navItems.map((item, idx) => (
               <a
                 key={item.name}
                 href={item.href}
@@ -121,24 +117,20 @@ const Header = () => {
                 {item.name}
               </a>
             ))}
-
             <div className="flex space-x-2 xs:space-x-4 pt-4 border-t border-white/10">
-              {socialLinks.map((social) => {
-                const Icon = social.icon;
-                return (
-                  <a
-                    key={social.label}
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-gray-400 hover:text-neon-blue transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-neon-blue p-2 rounded"
-                    aria-label={social.label}
-                    tabIndex={0}
-                  >
-                    <Icon size={24} className="text-[24px]" />
-                  </a>
-                );
-              })}
+              {socialLinks.map((social) => (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-400 hover:text-neon-blue transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-neon-blue p-2 rounded"
+                  aria-label={social.label}
+                  tabIndex={0}
+                >
+                  <social.icon size={24} className="xs:size-[28px]" />
+                </a>
+              ))}
             </div>
           </div>
         </div>
