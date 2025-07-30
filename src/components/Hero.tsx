@@ -64,10 +64,10 @@ const Hero = () => {
   return (
     <section
       id="hero"
-      className="h-screen flex items-center justify-center relative overflow-hidden pt-24"
+      className="min-h-screen flex items-center justify-center relative overflow-hidden pt-24 px-4 sm:px-6 lg:px-8"
     >
-      {/* Background decorativo animado (bolinhas coloridas) */}
-      <div className="absolute inset-0">
+      {/* Bolinhas decorativas animadas */}
+      <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-32 left-10 w-3 h-3 bg-neon-blue rounded-full animate-float opacity-60" />
         <div className="absolute top-48 right-20 w-2 h-2 bg-neon-purple rounded-full animate-bounce-subtle opacity-80" />
         <div className="absolute bottom-40 left-1/4 w-4 h-4 bg-neon-green rounded-full animate-float opacity-40 delay-[1000ms]" />
@@ -77,34 +77,34 @@ const Hero = () => {
         <div className="absolute bottom-1/4 left-20 w-2 h-2 bg-neon-blue rounded-full animate-float opacity-40 delay-[2500ms]" />
       </div>
 
-      {/* Container centralizado do conteúdo */}
-      <div className="container-custom mx-auto px-6 relative z-10 max-w-5xl">
-        <div className="flex flex-col-reverse md:flex-row items-center justify-between gap-10 md:gap-16">
-          {/* Coluna Esquerda: Texto e botões */}
-          <div className="flex-1 text-center md:text-left">
-            {/* Mensagem motivacional animada */}
+      {/* Conteúdo principal centralizado */}
+      <div className="relative z-10 w-full max-w-7xl mx-auto">
+        <div className="flex flex-col-reverse lg:flex-row items-center justify-between gap-10">
+          {/* Texto do lado esquerdo */}
+          <div className="flex-1 text-center lg:text-left">
+            {/* Mensagem motivacional rotativa */}
             <div className="mb-6 h-8">
-              <div className="glass px-6 py-2 rounded-full border border-neon-blue/30 inline-block">
+              <div className="glass px-5 py-2 rounded-full border border-neon-blue/30 inline-block">
                 <p className="text-sm md:text-base text-neon-blue font-space-mono font-medium transition-all duration-500">
                   {motivationalMessages[currentMessage]}
                 </p>
               </div>
             </div>
 
-            {/* Título principal */}
-            <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-              <span className="block mb-2 text-gray-300">Olá, eu sou</span>
+            {/* Cabeçalho principal com animação */}
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-gray-300">
+              <span className="block mb-2">Olá, eu sou</span>
               <span className="gradient-text block mb-4 neon-text">
                 Daniel Mendes
               </span>
-              <span className="text-lg md:text-2xl lg:text-3xl text-gray-300 block font-light">
+              <span className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-light text-gray-300">
                 {typewriterText}
                 <span className="animate-pulse text-neon-blue ml-1">|</span>
               </span>
             </h1>
 
-            {/* Descrição */}
-            <p className="text-base md:text-lg lg:text-xl text-gray-400 mb-8 max-w-3xl leading-relaxed">
+            {/* Descrição do desenvolvedor */}
+            <p className="text-base sm:text-lg md:text-xl text-gray-400 mb-8 max-w-xl leading-relaxed mx-auto lg:mx-0">
               Desenvolvedor Front-end apaixonado por criar interfaces modernas.
               <br className="hidden md:block" />
               Explorando o universo Back-end e fundador da
@@ -114,7 +114,7 @@ const Hero = () => {
               </span>
             </p>
 
-            {/* Badge de status */}
+            {/* Status atual */}
             <div className="inline-flex items-center glass px-6 py-3 rounded-full mb-10 border border-neon-green/30 bg-neon-green/5">
               <div className="w-3 h-3 bg-neon-green rounded-full animate-pulse mr-3" />
               <span className="text-sm md:text-base text-neon-green font-semibold">
@@ -122,14 +122,13 @@ const Hero = () => {
               </span>
             </div>
 
-            {/* Botões de ação */}
-            <div className="flex flex-col sm:flex-row gap-6 justify-center md:justify-start items-center">
+            {/* Botões de ação responsivos */}
+            <div className="flex flex-col sm:flex-row gap-6 justify-center lg:justify-start items-center">
               <Button
                 size="lg"
                 className="bg-gradient-to-r from-neon-blue to-neon-purple hover:from-neon-purple hover:to-neon-pink transform hover:scale-110 transition-all duration-500 shadow-2xl hover:shadow-neon-blue/50 px-8 py-4 text-lg font-bold rounded-full relative overflow-hidden group focus:outline-none focus-visible:ring-2 focus-visible:ring-neon-blue"
                 onClick={scrollToProjects}
                 aria-label="Ver portfólio de projetos"
-                tabIndex={0}
               >
                 <span className="relative z-10 flex items-center">
                   <ExternalLink
@@ -147,7 +146,6 @@ const Hero = () => {
                 className="border-2 border-neon-green text-neon-green hover:bg-neon-green hover:text-dark-primary transform hover:scale-110 transition-all duration-500 shadow-xl hover:shadow-neon-green/50 px-8 py-4 text-lg font-bold rounded-full relative overflow-hidden group focus:outline-none focus-visible:ring-2 focus-visible:ring-neon-green"
                 onClick={scrollToContact}
                 aria-label="Ir para contato rápido"
-                tabIndex={0}
               >
                 <span className="relative z-10 flex items-center">
                   <Mail
@@ -161,10 +159,10 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Coluna Direita: Avatar com borda e ícones decorativos */}
-          <div className="flex-1 flex justify-center md:justify-end mb-8 md:mb-0">
-            <div className="relative">
-              <div className="w-72 h-72 md:w-96 md:h-96 lg:w-[32rem] lg:h-[32rem] rounded-full bg-dark-primary flex items-center justify-center relative overflow-hidden border-4 border-gray-300 shadow-xl">
+          {/* Imagem do avatar com responsividade */}
+          <div className="flex-1 flex justify-center lg:justify-end mb-8 lg:mb-0">
+            <div className="relative w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-[28rem] lg:h-[28rem]">
+              <div className="rounded-full bg-dark-primary flex items-center justify-center overflow-hidden border-4 border-gray-300 shadow-xl w-full h-full">
                 <img
                   src={Imagelogo}
                   alt="Avatar"
