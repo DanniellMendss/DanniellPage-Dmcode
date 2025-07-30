@@ -15,7 +15,7 @@ export interface Project {
 }
 
 import Projeto1 from "@/Img/Projeto1.png";
-import Projeto2 from "@/Img/Projeto2.png";
+import Projeto2 from "@/Img/Projeto2.jpeg";
 import Projeto3 from "@/Img/Projeto3.jpeg";
 import Projeto4 from "@/Img/Projeto4.jpeg";
 import Projeto5 from "@/Img/Projeto5.png";
@@ -41,29 +41,29 @@ export const projects: Project[] = [
   },
   {
     id: 2,
-    title: "Dashboard Analytics",
+    title: "Gerador de Senha",
     description:
-      "Dashboard interativo para análise de dados com gráficos dinâmicos e visualizações. Interface responsiva com métricas em tempo real e relatórios personalizáveis.",
+      "Desenvolvi um gerador de senhas seguro e personalizável para quem precisa criar senhas fortes com facilidade!",
     image: Projeto2,
-    technologies: ["React", "Chart.js", "API Integration", "PostgreSQL"],
-    category: "React",
-    liveUrl: "#",
+    technologies: ["HTML5", "CSS3", "JavaScript"],
+    category: "JavaScript",
+    liveUrl: "https://gerador-de-senha-five-weld.vercel.app/",
     featured: true,
-    year: "2024",
+    year: "2025",
     status: "Concluído",
-    duration: "2 meses",
+    duration: "15 dias",
   },
   {
     id: 3,
-    title: "Landing Page Corporativa",
+    title: "Painel Informativo COVID-19",
     description:
-      "Site institucional responsivo com design moderno e otimização SEO. Inclui formulários de contato, galeria de projetos e integração com redes sociais.",
+      "Projeto para simular um painel global de monitoramento da COVID-19, com foco em design moderno, dados visuais impactantes e experiência do usuários.",
     image: Projeto3,
-    technologies: ["HTML5", "CSS3", "JavaScript", "GSAP"],
+    technologies: ["HTML5", "CSS3", "JavaScript"],
     category: "JavaScript",
-    liveUrl: "#",
+    liveUrl: "https://covid-19-ochre.vercel.app/",
     featured: true,
-    year: "2023",
+    year: "2025",
     status: "Concluído",
     duration: "1 mês",
   },
