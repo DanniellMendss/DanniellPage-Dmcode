@@ -11,11 +11,13 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
+import emailjs from "@emailjs/browser";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    whatsapp: "",
     subject: "",
     message: "",
   });
@@ -35,15 +37,44 @@ const Contact = () => {
     e.preventDefault();
     setIsLoading(true);
 
-    // Simulate form submission
-    setTimeout(() => {
-      setIsLoading(false);
+    // Configuração do EmailJS
+    // Substitua pelos seus próprios IDs do EmailJS
+    const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+    const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+    // Parâmetros para o template do EmailJS
+    const templateParams = {
+      from_name: formData.name,
+      from_email: formData.email,
+      whatsapp: formData.whatsapp,
+      subject: formData.subject,
+      message: formData.message,
+    };
+
+    try {
+      await emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY);
       toast({
         title: "Mensagem enviada! ✨",
         description: "Obrigado pelo contato! Retornarei em breve.",
       });
-      setFormData({ name: "", email: "", subject: "", message: "" });
-    }, 2000);
+      setFormData({
+        name: "",
+        email: "",
+        whatsapp: "",
+        subject: "",
+        message: "",
+      });
+    } catch (error) {
+      toast({
+        title: "Erro ao enviar mensagem",
+        description:
+          "Tente novamente ou envie um e-mail direto para dmcodesolutions@gmail.com",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const contactInfo = [
@@ -84,35 +115,42 @@ const Contact = () => {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
           {/* Contact Info */}
           <div className="space-y-8">
-            <div className="glass p-8 rounded-2xl border border-white/10">
-              <h3 className="text-2xl font-bold text-white mb-6">
+            <div className="glass p-4 xs:p-6 md:p-8 rounded-2xl border border-white/10">
+              <h3 className="text-xl xs:text-2xl font-bold text-white mb-6">
                 Entre em Contato
               </h3>
-              <p className="text-gray-400 mb-8 leading-relaxed">
+              <p className="text-gray-400 text-sm xs:text-base mb-8 leading-relaxed">
                 Estou sempre aberto a discutir novos projetos, oportunidades
                 criativas ou simplesmente trocar uma ideia sobre tecnologia. Não
                 hesite em entrar em contato!
               </p>
 
               {/* Contact Details */}
-              <div className="space-y-6">
+              <div className="space-y-4 xs:space-y-6">
                 {contactInfo.map((info, index) => (
                   <a
                     key={index}
                     href={info.link}
-                    className="flex items-center space-x-4 p-4 rounded-xl border border-white/10 hover:border-white/20 transition-all duration-300 hover:transform hover:scale-105 group"
+                    className="flex items-center space-x-3 xs:space-x-4 p-3 xs:p-4 rounded-xl border border-white/10 hover:border-white/20 transition-all duration-300 hover:transform hover:scale-105 group"
                   >
                     <div
-                      className={`w-12 h-12 rounded-xl bg-gradient-to-r from-${info.color} to-neon-purple flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}
+                      className={`w-10 xs:w-12 h-10 xs:h-12 rounded-xl bg-gradient-to-r from-${info.color} to-neon-purple flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}
                     >
-                      <info.icon size={20} className="text-dark-primary" />
+                      <info.icon
+                        size={18}
+                        className="xs:size-5 text-dark-primary"
+                      />
                     </div>
                     <div>
-                      <p className="text-gray-400 text-sm">{info.title}</p>
-                      <p className={`text-${info.color} font-medium`}>
+                      <p className="text-gray-400 text-xs xs:text-sm">
+                        {info.title}
+                      </p>
+                      <p
+                        className={`text-${info.color} font-medium text-xs xs:text-sm`}
+                      >
                         {info.value}
                       </p>
                     </div>
@@ -121,44 +159,52 @@ const Contact = () => {
               </div>
 
               {/* Availability Status */}
-              <div className="mt-8 p-4 bg-neon-green/10 border border-neon-green/30 rounded-xl">
+              <div className="mt-6 xs:mt-8 p-3 xs:p-4 bg-neon-green/10 border border-neon-green/30 rounded-xl">
                 <div className="flex items-center space-x-2">
                   <div className="w-3 h-3 bg-neon-green rounded-full animate-pulse"></div>
-                  <span className="text-neon-green font-semibold">
+                  <span className="text-neon-green font-semibold text-xs xs:text-sm">
                     Disponível para novos projetos
                   </span>
                 </div>
-                <p className="text-gray-400 text-sm mt-2">
+                <p className="text-gray-400 text-xs xs:text-sm mt-2">
                   Resposta garantida em até 24 horas
                 </p>
               </div>
             </div>
 
             {/* Quick Stats */}
-            <div className="grid grid-cols-2 gap-4">
-              <div className="glass p-6 rounded-xl border border-white/10 text-center">
-                <div className="text-2xl font-bold text-neon-blue mb-1">
+            <div className="grid grid-cols-2 gap-2 xs:gap-4">
+              <div className="glass p-3 xs:p-6 rounded-xl border border-white/10 text-center">
+                <div className="text-lg xs:text-2xl font-bold text-neon-blue mb-1">
                   24h
                 </div>
-                <div className="text-gray-400 text-sm">Tempo de Resposta</div>
+                <div className="text-xs xs:text-sm text-gray-400">
+                  Tempo de Resposta
+                </div>
               </div>
-              <div className="glass p-6 rounded-xl border border-white/10 text-center">
-                <div className="text-2xl font-bold text-neon-purple mb-1">
+              <div className="glass p-3 xs:p-6 rounded-xl border border-white/10 text-center">
+                <div className="text-lg xs:text-2xl font-bold text-neon-purple mb-1">
                   100%
                 </div>
-                <div className="text-gray-400 text-sm">Satisfação</div>
+                <div className="text-xs xs:text-sm text-gray-400">
+                  Satisfação
+                </div>
               </div>
             </div>
           </div>
 
           {/* Contact Form */}
-          <div className="glass p-8 rounded-2xl border border-white/10">
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid md:grid-cols-2 gap-4">
+          <div className="glass p-4 xs:p-6 md:p-8 rounded-2xl border border-white/10 mt-10 lg:mt-0">
+            <form
+              onSubmit={handleSubmit}
+              className="space-y-4 xs:space-y-6"
+              aria-label="Formulário de contato"
+            >
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label
                     htmlFor="name"
-                    className="block text-gray-300 text-sm font-medium mb-2"
+                    className="block text-gray-300 text-xs xs:text-sm font-medium mb-2"
                   >
                     Nome Completo
                   </label>
@@ -169,14 +215,15 @@ const Contact = () => {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="bg-white/5 border-white/20 focus:border-neon-blue text-white placeholder-gray-500"
+                    aria-label="Nome completo"
+                    className="bg-white/5 border-white/20 focus:border-neon-blue text-white placeholder-gray-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-neon-blue w-full"
                     placeholder="Seu nome completo"
                   />
                 </div>
                 <div>
                   <label
                     htmlFor="email"
-                    className="block text-gray-300 text-sm font-medium mb-2"
+                    className="block text-gray-300 text-xs xs:text-sm font-medium mb-2"
                   >
                     Email
                   </label>
@@ -187,35 +234,52 @@ const Contact = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="bg-white/5 border-white/20 focus:border-neon-blue text-white placeholder-gray-500"
+                    aria-label="E-mail"
+                    className="bg-white/5 border-white/20 focus:border-neon-blue text-white placeholder-gray-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-neon-blue w-full"
                     placeholder="seu@email.com"
                   />
                 </div>
+                <div className="md:col-span-2">
+                  <label
+                    htmlFor="whatsapp"
+                    className="block text-gray-300 text-xs xs:text-sm font-medium mb-2"
+                  >
+                    WhatsApp
+                  </label>
+                  <Input
+                    id="whatsapp"
+                    name="whatsapp"
+                    type="tel"
+                    value={formData.whatsapp}
+                    onChange={handleChange}
+                    required
+                    aria-label="WhatsApp"
+                    className="bg-white/5 border-white/20 focus:border-neon-blue text-white placeholder-gray-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-neon-blue w-full"
+                    placeholder="(DDD) 90000-0000"
+                  />
+                </div>
               </div>
-
-              <div>
-                <label
-                  htmlFor="subject"
-                  className="block text-gray-300 text-sm font-medium mb-2"
-                >
-                  Assunto
-                </label>
-                <Input
-                  id="subject"
-                  name="subject"
-                  type="text"
-                  value={formData.subject}
-                  onChange={handleChange}
-                  required
-                  className="bg-white/5 border-white/20 focus:border-neon-blue text-white placeholder-gray-500"
-                  placeholder="Assunto da mensagem"
-                />
-              </div>
-
+              <label
+                htmlFor="subject"
+                className="block text-gray-300 text-xs xs:text-sm font-medium mb-2"
+              >
+                Assunto
+              </label>
+              <Input
+                id="subject"
+                name="subject"
+                type="text"
+                value={formData.subject}
+                onChange={handleChange}
+                required
+                aria-label="Assunto da mensagem"
+                className="bg-white/5 border-white/20 focus:border-neon-blue text-white placeholder-gray-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-neon-blue w-full"
+                placeholder="Assunto da mensagem"
+              />
               <div>
                 <label
                   htmlFor="message"
-                  className="block text-gray-300 text-sm font-medium mb-2"
+                  className="block text-gray-300 text-xs xs:text-sm font-medium mb-2"
                 >
                   Mensagem
                 </label>
@@ -226,19 +290,23 @@ const Contact = () => {
                   onChange={handleChange}
                   required
                   rows={6}
-                  className="bg-white/5 border-white/20 focus:border-neon-blue text-white placeholder-gray-500 resize-none"
+                  aria-label="Mensagem"
+                  className="bg-white/5 border-white/20 focus:border-neon-blue text-white placeholder-gray-500 resize-none focus:outline-none focus-visible:ring-2 focus-visible:ring-neon-blue w-full"
                   placeholder="Conte-me sobre seu projeto ou ideia..."
                 />
               </div>
-
               <Button
                 type="submit"
                 disabled={isLoading}
-                className="w-full bg-gradient-to-r from-neon-blue to-neon-purple hover:from-neon-purple hover:to-neon-green transform hover:scale-105 transition-all duration-300 py-6 text-lg font-semibold disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+                aria-label="Enviar mensagem"
+                className="w-full bg-gradient-to-r from-neon-blue to-neon-purple hover:from-neon-purple hover:to-neon-green transform hover:scale-105 transition-all duration-300 py-5 xs:py-6 text-base xs:text-lg font-semibold disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none focus:outline-none focus-visible:ring-2 focus-visible:ring-neon-blue"
               >
                 {isLoading ? (
                   <div className="flex items-center space-x-2">
-                    <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                    <div
+                      className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"
+                      aria-label="Enviando"
+                    ></div>
                     <span>Enviando...</span>
                   </div>
                 ) : (
@@ -251,13 +319,13 @@ const Contact = () => {
             </form>
 
             {/* Form Footer */}
-            <div className="mt-6 p-4 bg-blue-500/10 border border-blue-500/30 rounded-xl">
+            <div className="mt-4 xs:mt-6 p-3 xs:p-4 bg-blue-500/10 border border-blue-500/30 rounded-xl">
               <div className="flex items-start space-x-2">
                 <AlertCircle
                   size={16}
                   className="text-blue-400 mt-0.5 flex-shrink-0"
                 />
-                <p className="text-blue-400 text-sm">
+                <p className="text-blue-400 text-xs xs:text-sm">
                   Seus dados estão seguros e serão utilizados apenas para
                   responder seu contato.
                 </p>

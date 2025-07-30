@@ -1,183 +1,79 @@
-import React, { useState } from "react";
-import { ExternalLink, Github, Filter } from "lucide-react";
+// Componente de Projetos em Destaque
+import React from "react";
+import { ExternalLink, Github } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { projects } from "@/lib/projects";
 
-const Projects = () => {
-  const [activeFilter, setActiveFilter] = useState("Todos");
-
-  const projects = [
-    {
-      id: 1,
-      title: "E-commerce Moderno",
-      description:
-        "Plataforma completa de e-commerce com React, TypeScript e integração de pagamento.",
-      image:
-        "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=500&h=300&fit=crop",
-      technologies: ["React", "TypeScript", "Tailwind CSS", "Node.js"],
-      category: "React",
-      liveUrl: "#",
-      githubUrl: "#",
-      featured: true,
-    },
-    {
-      id: 2,
-      title: "Dashboard Analytics",
-      description:
-        "Dashboard interativo para análise de dados com gráficos dinâmicos e visualizações.",
-      image:
-        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&h=300&fit=crop",
-      technologies: ["React", "Chart.js", "API Integration"],
-      category: "React",
-      liveUrl: "#",
-      githubUrl: "#",
-      featured: true,
-    },
-    {
-      id: 3,
-      title: "Landing Page Corporativa",
-      description:
-        "Site institucional responsivo com design moderno e otimização SEO.",
-      image:
-        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&h=300&fit=crop",
-      technologies: ["HTML5", "CSS3", "JavaScript", "GSAP"],
-      category: "JavaScript",
-      liveUrl: "#",
-      githubUrl: "#",
-      featured: false,
-    },
-    {
-      id: 4,
-      title: "API RESTful",
-      description:
-        "API robusta para gerenciamento de usuários com autenticação JWT e banco PostgreSQL.",
-      image:
-        "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=500&h=300&fit=crop",
-      technologies: ["Node.js", "Express", "PostgreSQL", "JWT"],
-      category: "Node.js",
-      liveUrl: "#",
-      githubUrl: "#",
-      featured: true,
-    },
-    {
-      id: 5,
-      title: "App Mobile React Native",
-      description:
-        "Aplicativo mobile para delivery com geolocalização e pagamentos.",
-      image:
-        "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=500&h=300&fit=crop",
-      technologies: ["React Native", "Firebase", "Maps API"],
-      category: "React",
-      liveUrl: "#",
-      githubUrl: "#",
-      featured: false,
-    },
-    {
-      id: 6,
-      title: "Sistema de Blog",
-      description:
-        "CMS personalizado para blogs com editor rico e sistema de comentários.",
-      image:
-        "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=500&h=300&fit=crop",
-      technologies: ["JavaScript", "MongoDB", "Express"],
-      category: "JavaScript",
-      liveUrl: "#",
-      githubUrl: "#",
-      featured: false,
-    },
-  ];
-
-  const filters = ["Todos", "React", "JavaScript", "Node.js"];
-
-  const filteredProjects =
-    activeFilter === "Todos"
-      ? projects
-      : projects.filter((project) => project.category === activeFilter);
+const ProjectsComponent = () => {
+  // Seleciona apenas os 3 projetos em destaque
+  const filteredProjects = projects.filter((p) => p.featured).slice(0, 3);
 
   return (
+    // Seção principal dos projetos
     <section id="projects" className="section-padding">
-      <div className="container-custom mx-auto">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+      <div className="container-custom mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Cabeçalho da seção */}
+        <div className="text-center mb-10 md:mb-16">
+          <h2 className="text-3xl xs:text-4xl md:text-5xl font-bold mb-4">
             <span className="gradient-text">Projetos em Destaque</span>
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-neon-purple to-neon-green mx-auto mb-6"></div>
-          <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+          <div className="w-20 md:w-24 h-1 bg-gradient-to-r from-neon-purple to-neon-green mx-auto mb-6"></div>
+          <p className="text-base xs:text-lg md:text-xl text-gray-400 max-w-2xl mx-auto">
             Conheça alguns dos projetos que desenvolvi com paixão e dedicação
           </p>
         </div>
 
-        {/* Filter Buttons */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
-          {filters.map((filter) => (
-            <Button
-              key={filter}
-              variant={activeFilter === filter ? "default" : "outline"}
-              className={`px-6 py-2 rounded-full transition-all duration-300 ${
-                activeFilter === filter
-                  ? "bg-gradient-to-r from-neon-blue to-neon-purple shadow-neon-blue/30"
-                  : "border-gray-600 text-gray-400 hover:border-neon-blue hover:text-neon-blue"
-              }`}
-              onClick={() => setActiveFilter(filter)}
-            >
-              <Filter size={16} className="mr-2" />
-              {filter}
-            </Button>
-          ))}
-        </div>
-
-        {/* Projects Grid */}
+        {/* Grid responsivo dos projetos */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredProjects.map((project, index) => (
             <div
               key={project.id}
-              className="group glass rounded-2xl overflow-hidden border border-white/10 hover:border-white/20 transition-all duration-300 hover:transform hover:scale-105"
-              style={{ animationDelay: `${index * 0.1}s` }}
+              className="glass rounded-2xl overflow-hidden border border-white/10 transition-all duration-300 focus-within:ring-2 focus-within:ring-neon-blue hover:scale-[1.01] hover:shadow-md"
+              tabIndex={-1}
             >
-              {/* Project Image */}
+              {/* Imagem do projeto */}
               <div className="relative overflow-hidden">
                 <img
                   src={project.image}
-                  alt={project.title}
-                  className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
+                  alt={project.title || 'Imagem do projeto'}
+                  loading="lazy"
+                  className="w-full h-48 object-cover object-center transition-transform duration-500 focus:outline-none focus:ring-2 focus:ring-neon-blue"
+                  tabIndex={0}
                 />
                 {project.featured && (
                   <div className="absolute top-4 left-4 bg-gradient-to-r from-neon-green to-neon-blue px-3 py-1 rounded-full text-xs font-semibold text-dark-primary">
                     Destaque
                   </div>
                 )}
-                <div className="absolute inset-0 bg-gradient-to-t from-dark-primary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                {/* Hover Actions */}
-                {/* <div className="absolute inset-0 flex items-center justify-center space-x-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <Button
-                    size="sm"
-                    className="bg-neon-blue hover:bg-neon-blue/80"
-                    onClick={() => window.open(project.liveUrl, "_blank")}
-                  >
-                    <ExternalLink size={16} />
-                  </Button>
-                  <Button
-                    size="sm"
-                    variant="outline"
-                    className="border-white text-white hover:bg-white hover:text-dark-primary"
-                    onClick={() => window.open(project.githubUrl, "_blank")}
-                  >
-                    <Github size={16} />
-                  </Button>
-                </div> */}{" "}
-                {/* tags do projeto, icone so git e e visualização do projeto */}
+                <div className="absolute top-4 right-4 glass px-2 py-1 rounded-full">
+                  <span className={`text-xs font-medium ${project.status === 'Concluído' ? 'text-neon-green' : project.status === 'Em desenvolvimento' ? 'text-neon-blue' : 'text-gray-400'}`}>{project.status}</span>
+                </div>
+                {/* Removido overlay de hover */}
+                {/* Hover Actions removido */}
               </div>
 
-              {/* Project Info */}
+              {/* Informações do projeto */}
               <div className="p-6">
-                <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-neon-blue transition-colors duration-300">
+                {/* Meta do projeto */}
+                <div className="flex items-center justify-between mb-3">
+                  <div className="flex items-center space-x-2 text-xs text-gray-500">
+                    <span><svg width='12' height='12' fill='none' stroke='currentColor' strokeWidth='2' viewBox='0 0 24 24'><circle cx='12' cy='12' r='10' /><path d='M12 6v6l4 2' /></svg></span>
+                    <span>{project.year}</span>
+                    <span>•</span>
+                    <span>{project.duration}</span>
+                  </div>
+                  <span className="text-xs text-gray-500 flex items-center">
+                    <svg width='12' height='12' fill='none' stroke='currentColor' strokeWidth='2' viewBox='0 0 24 24'><path d='M16 18v-1a4 4 0 0 0-8 0v1' /><circle cx='12' cy='7' r='4' /></svg>
+                    {project.category}
+                  </span>
+                </div>
+                <h3 className="text-xl font-semibold text-white mb-2 transition-colors duration-300">
                   {project.title}
                 </h3>
                 <p className="text-gray-400 text-sm mb-4 leading-relaxed">
                   {project.description}
                 </p>
-
-                {/* Technologies */}
+                {/* Tecnologias */}
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.technologies.map((tech, techIndex) => (
                     <span
@@ -188,25 +84,15 @@ const Projects = () => {
                     </span>
                   ))}
                 </div>
-
-                {/* Action Buttons */}
+                {/* Botão de ação */}
                 <div className="flex space-x-3">
                   <Button
                     size="sm"
-                    className="flex-1 bg-gradient-to-r from-neon-blue to-neon-purple hover:from-neon-purple hover:to-neon-pink text-xs"
+                    className="flex-1 bg-gradient-to-r from-neon-blue to-neon-purple hover:from-neon-purple hover:to-neon-pink text-xs text-white hover:text-white"
                     onClick={() => window.open(project.liveUrl, "_blank")}
                   >
                     <ExternalLink size={14} className="mr-1" />
                     Ver Projeto
-                  </Button>
-                  <Button
-                    size="sm"
-                    variant="outline"
-                    className="border-gray-600 text-gray-400 hover:border-neon-green hover:text-neon-green text-xs"
-                    onClick={() => window.open(project.githubUrl, "_blank")}
-                  >
-                    <Github size={14} className="mr-1" />
-                    Código
                   </Button>
                 </div>
               </div>
@@ -214,12 +100,12 @@ const Projects = () => {
           ))}
         </div>
 
-        {/* Show More Button */}
-        <div className="text-center mt-12">
+        {/* Botão para ver todos os projetos */}
+        <div className="text-center mt-10 md:mt-12">
           <Button
             size="lg"
             variant="outline"
-            className="border-neon-purple text-neon-purple hover:bg-neon-purple hover:text-dark-primary px-8 py-3"
+            className="border-neon-purple text-white hover:bg-neon-purple hover:text-white px-8 py-3"
             onClick={() => (window.location.href = "/all-projects")}
           >
             Ver Todos os Projetos
@@ -230,4 +116,5 @@ const Projects = () => {
   );
 };
 
+const Projects = React.memo(ProjectsComponent);
 export default Projects;

@@ -1,24 +1,42 @@
+// Importações de bibliotecas e ícones
 import React, { useState, useEffect } from "react";
+import { Code2, Zap } from "lucide-react";
 import {
-  Code2,
-  Database,
-  Palette,
-  Server,
-  Smartphone,
-  GitBranch,
-  Figma,
-  Chrome,
-  Layers,
-  Zap,
-  TrendingUp,
-  Award,
-} from "lucide-react";
+  SiReact,
+  SiTypescript,
+  SiJavascript,
+  SiHtml5,
+  SiCss3,
+  SiTailwindcss,
+  SiNodedotjs,
+  SiExpress,
+  SiPostgresql,
+  SiMongodb,
+  SiGit,
+  SiGithub,
+  SiFigma,
+  SiVscodium,
+  SiFirebase,
+  SiNextdotjs,
+  SiDocker,
+  SiAmazon,
+  SiPython,
+  SiReactivex,
+} from "react-icons/si";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
-const Skills = () => {
+// Componente principal de Skills & Tecnologias
+const SkillsComponent = () => {
+  // Estado para animação de visibilidade
   const [isVisible, setIsVisible] = useState(false);
 
+  // Efeito para ativar animação ao entrar na tela
   useEffect(() => {
-    const observer = new IntersectionObserver(
+    const observer = new window.IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true);
@@ -26,76 +44,92 @@ const Skills = () => {
       },
       { threshold: 0.1 }
     );
-
     const element = document.getElementById("skills");
-    if (element) {
-      observer.observe(element);
-    }
-
+    if (element) observer.observe(element);
     return () => observer.disconnect();
   }, []);
 
-  const skillCategories = [
+  // Lista de tecnologias principais com ícones, cor e tempo de experiência
+  const technologies = [
     {
-      title: "Front-end",
-      icon: Code2,
-      color: "neon-blue",
-      description: "Criação de interfaces modernas e responsivas",
-      skills: [
-        { name: "HTML5", level: 85, icon: "🌐", years: "2+ anos" },
-        { name: "CSS3", level: 80, icon: "🎨", years: "2+ anos" },
-        { name: "JavaScript", level: 62, icon: "⚡", years: "1+ anos" },
-        { name: "TypeScript", level: 62, icon: "📘", years: "1+ anos" },
-        { name: "React.js", level: 65, icon: "⚛️", years: "1+ anos" },
-        { name: "Tailwind CSS", level: 62, icon: "💨", years: "1+ anos" },
-      ],
+      name: "React",
+      icon: <SiReact className="text-cyan-400" />,
+      years: "1+ ano",
     },
     {
-      title: "Back-end",
-      icon: Server,
-      color: "neon-purple",
-      description: "Desenvolvimento de APIs e serviços robustos",
-      skills: [
-        { name: "Node.js", level: 65, icon: "🟢", years: "1+ ano" },
-        { name: "Express.js", level: 55, icon: "🚀", years: "1+ ano" },
-        { name: "PostgreSQL", level: 60, icon: "🐘", years: "8 meses" },
-        { name: "MongoDB", level: 48, icon: "🍃", years: "6 meses" },
-      ],
+      name: "TypeScript",
+      icon: <SiTypescript className="text-blue-500" />,
+      years: "1+ ano",
     },
     {
-      title: "Ferramentas & Design",
-      icon: Layers,
-      color: "neon-green",
-      description: "Ferramentas para produtividade e design",
-      skills: [
-        { name: "Git / GitHub", level: 90, icon: "📊", years: "3+ anos" },
-        { name: "Figma", level: 85, icon: "🎯", years: "1+ anos" },
-        { name: "VS Code", level: 95, icon: "💻", years: "4+ anos" },
-        { name: "Firebase", level: 78, icon: "🔥", years: "1+ ano" },
-      ],
+      name: "JavaScript",
+      icon: <SiJavascript className="text-yellow-400" />,
+      years: "1+ ano",
+    },
+    {
+      name: "HTML5",
+      icon: <SiHtml5 className="text-orange-500" />,
+      years: "2+ anos",
+    },
+    {
+      name: "CSS3",
+      icon: <SiCss3 className="text-blue-400" />,
+      years: "2+ anos",
+    },
+    {
+      name: "Tailwind CSS",
+      icon: <SiTailwindcss className="text-cyan-300" />,
+      years: "1+ ano",
+    },
+    {
+      name: "Node.js",
+      icon: <SiNodedotjs className="text-green-500" />,
+      years: "8 meses",
+    },
+    {
+      name: "PostgreSQL",
+      icon: <SiPostgresql className="text-blue-700" />,
+      years: "6 meses",
+    },
+    {
+      name: "MongoDB",
+      icon: <SiMongodb className="text-green-400" />,
+      years: "5 meses",
+    },
+    {
+      name: "Git",
+      icon: <SiGit className="text-orange-400" />,
+      years: "1+ anos",
+    },
+    {
+      name: "GitHub",
+      icon: <SiGithub className="text-white" />,
+      years: "2+ anos",
+    },
+    {
+      name: "Figma",
+      icon: <SiFigma className="text-pink-500" />,
+      years: "1+ ano",
+    },
+    {
+      name: "VS Code",
+      icon: <SiVscodium className="text-blue-400" />,
+      years: "3+ anos",
+    },
+    {
+      name: "Firebase",
+      icon: <SiFirebase className="text-yellow-500" />,
+      years: "8 meses",
     },
   ];
 
-  const getSkillColor = (level: number) => {
-    if (level >= 90) return "from-neon-green to-neon-blue";
-    if (level >= 80) return "from-neon-blue to-neon-purple";
-    if (level >= 70) return "from-neon-purple to-neon-pink";
-    return "from-gray-600 to-gray-500";
-  };
-
-  const getSkillRating = (level: number) => {
-    if (level >= 90) return { text: "Avançado", icon: Award };
-    if (level >= 75) return { text: "Intermediário+", icon: TrendingUp };
-    if (level >= 60) return { text: "Intermediário", icon: Code2 };
-    return { text: "Básico", icon: Chrome };
-  };
-
   return (
+    // Seção principal de Skills
     <section
       id="skills"
       className="section-padding bg-dark-secondary/30 relative overflow-hidden"
     >
-      {/* Background Effects */}
+      {/* Efeitos de fundo animados */}
       <div className="absolute inset-0 opacity-20">
         <div className="absolute top-20 left-10 w-32 h-32 bg-neon-blue rounded-full blur-3xl animate-float"></div>
         <div
@@ -108,8 +142,9 @@ const Skills = () => {
         ></div>
       </div>
 
+      {/* Container centralizado */}
       <div className="container-custom mx-auto relative z-10">
-        {/* Section Header */}
+        {/* Cabeçalho da seção */}
         <div className="text-center mb-20">
           <div className="inline-flex items-center space-x-2 mb-4 glass px-4 py-2 rounded-full border border-neon-blue/30">
             <Code2 className="text-neon-blue" size={20} />
@@ -117,130 +152,58 @@ const Skills = () => {
               Expertise Técnica
             </span>
           </div>
-
           <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6">
             <span className="gradient-text">Skills & Tecnologias</span>
           </h2>
-
           <div className="w-32 h-1 bg-gradient-to-r from-neon-green via-neon-blue to-neon-purple mx-auto mb-8"></div>
-
           <p className="text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
             Minhas habilidades técnicas desenvolvidas ao longo da jornada como
             desenvolvedor
           </p>
         </div>
 
-        {/* Skills Categories */}
-        <div className="grid lg:grid-cols-3 gap-10 mb-20">
-          {skillCategories.map((category, categoryIndex) => (
-            <div
-              key={categoryIndex}
-              className="glass p-8 rounded-3xl border border-white/10 hover:border-white/20 transition-all duration-500 group relative overflow-hidden"
-              style={{
-                animationDelay: `${categoryIndex * 0.2}s`,
-                transform: isVisible
-                  ? "translateY(0) scale(1)"
-                  : "translateY(50px) scale(0.95)",
-                opacity: isVisible ? 1 : 0,
-                transition: "all 0.8s ease-out",
-              }}
-            >
-              {/* Category Background Gradient */}
-              <div
-                className={`absolute inset-0 bg-gradient-to-br from-${category.color}/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
-              ></div>
-
-              {/* Category Header */}
-              <div className="relative z-10">
-                <div className="flex items-center justify-between mb-6">
-                  <div className="flex items-center space-x-4">
-                    <div
-                      className={`w-16 h-16 rounded-2xl bg-gradient-to-r from-${category.color} to-neon-purple flex items-center justify-center group-hover:scale-110 transition-transform duration-500 shadow-lg`}
-                    >
-                      <category.icon size={28} className="text-dark-primary" />
-                    </div>
-                    <div>
-                      <h3 className="text-2xl font-bold text-white mb-1">
-                        {category.title}
-                      </h3>
-                      <p className="text-sm text-gray-400">
-                        {category.description}
-                      </p>
-                    </div>
+        {/* Grid de Tecnologias principais */}
+        <div className="mb-20">
+          <h3 className="text-3xl font-bold text-center text-neon-blue mb-8">
+            Tecnologias
+          </h3>
+          <div className="grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-4 xs:gap-6">
+            {technologies.map((tech, idx) => (
+              // Tooltip acessível para cada tecnologia
+              <Tooltip key={tech.name}>
+                <TooltipTrigger asChild>
+                  <div
+                    className="flex flex-col items-center justify-center bg-white/5 border border-white/10 rounded-2xl p-3 xs:p-4 md:p-6 hover:bg-neon-blue/10 focus:bg-neon-blue/20 transition-all duration-300 shadow group focus:outline-none focus-visible:ring-2 focus-visible:ring-neon-blue min-w-0"
+                    tabIndex={0}
+                    aria-label={`Tecnologia ${tech.name}, ${tech.years} de experiência`}
+                  >
+                    {/* Ícone da tecnologia */}
+                    <span className="text-2xl xs:text-3xl md:text-4xl mb-2 group-hover:scale-110 transition-transform duration-300">
+                      {tech.icon}
+                    </span>
+                    {/* Nome da tecnologia */}
+                    <span className="text-xs xs:text-sm md:text-base text-gray-200 font-semibold group-hover:text-neon-blue transition-colors duration-300 text-center break-words">
+                      {tech.name}
+                    </span>
+                    {/* Tempo de experiência */}
+                    <span className="text-[10px] xs:text-xs text-gray-400 mt-1">
+                      {tech.years}
+                    </span>
                   </div>
-                </div>
-
-                {/* Skills List */}
-                <div className="space-y-6">
-                  {category.skills.map((skill, skillIndex) => {
-                    const rating = getSkillRating(skill.level);
-                    return (
-                      <div key={skillIndex} className="space-y-3">
-                        {/* Skill Header */}
-                        <div className="flex items-center justify-between">
-                          <div className="flex items-center space-x-3">
-                            <span className="text-2xl">{skill.icon}</span>
-                            <div>
-                              <span className="text-gray-200 font-semibold text-lg">
-                                {skill.name}
-                              </span>
-                              <div className="flex items-center space-x-2 mt-1">
-                                <rating.icon
-                                  size={14}
-                                  className={`text-${category.color}`}
-                                />
-                                <span
-                                  className={`text-xs font-medium text-${category.color}`}
-                                >
-                                  {rating.text}
-                                </span>
-                                <span className="text-xs text-gray-500">
-                                  • {skill.years}
-                                </span>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="text-right">
-                            <span
-                              className={`text-lg font-bold text-${category.color} block`}
-                            >
-                              {skill.level}%
-                            </span>
-                          </div>
-                        </div>
-
-                        {/* Enhanced Progress Bar */}
-                        <div className="relative">
-                          <div className="w-full bg-gray-800 rounded-full h-3 overflow-hidden shadow-inner">
-                            <div
-                              className={`h-full bg-gradient-to-r ${getSkillColor(
-                                skill.level
-                              )} rounded-full transition-all duration-1000 ease-out relative overflow-hidden`}
-                              style={{
-                                width: isVisible ? `${skill.level}%` : "0%",
-                                animationDelay: `${
-                                  (categoryIndex * 6 + skillIndex) * 0.1
-                                }s`,
-                              }}
-                            >
-                              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-pulse"></div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-            </div>
-          ))}
+                </TooltipTrigger>
+                <TooltipContent side="top">
+                  {tech.name} - {tech.years} de experiência
+                </TooltipContent>
+              </Tooltip>
+            ))}
+          </div>
         </div>
 
-        {/* Currently Learning Section */}
-        <div className="glass p-10 rounded-3xl border border-neon-purple/30 bg-gradient-to-r from-neon-purple/5 to-neon-blue/5 relative overflow-hidden">
+        {/* Seção de tecnologias atualmente aprendidas */}
+        <div className="glass p-4 xs:p-6 md:p-10 rounded-3xl border border-neon-purple/30 bg-gradient-to-r from-neon-purple/5 to-neon-blue/5 relative overflow-hidden mt-20">
           <div className="absolute inset-0 bg-gradient-to-r from-neon-purple/5 via-transparent to-neon-blue/5"></div>
-
           <div className="text-center relative z-10">
+            {/* Título da seção */}
             <div className="flex items-center justify-center space-x-3 mb-6">
               <Zap
                 className="text-neon-purple animate-bounce-subtle"
@@ -254,32 +217,63 @@ const Skills = () => {
                 size={28}
               />
             </div>
-
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 mb-8">
+            {/* Grid de tecnologias em aprendizado */}
+            <div className="grid grid-cols-2 xs:grid-cols-3 md:grid-cols-6 gap-4 xs:gap-6 mb-8">
               {[
-                { name: "Next.js", icon: "▲", color: "neon-blue" },
-                { name: "Docker", icon: "🐳", color: "neon-purple" },
-                { name: "AWS", icon: "☁️", color: "neon-green" },
-                { name: "PostgreSQL", icon: "🐘", color: "neon-blue" },
-                { name: "Python", icon: "🐍", color: "neon-purple" },
-                { name: "React Native", icon: "📱", color: "neon-green" },
+                {
+                  name: "Next.js",
+                  icon: <SiNextdotjs className="text-gray-200" />,
+                  desc: "Framework React para SSR e SSG",
+                },
+                {
+                  name: "Docker",
+                  icon: <SiDocker className="text-blue-400" />,
+                  desc: "Containers e DevOps",
+                },
+                {
+                  name: "AWS",
+                  icon: <SiAmazon className="text-yellow-400" />,
+                  desc: "Cloud Computing",
+                },
+                {
+                  name: "PostgreSQL",
+                  icon: <SiPostgresql className="text-blue-700" />,
+                  desc: "Banco de dados relacional",
+                },
+                {
+                  name: "Python",
+                  icon: <SiPython className="text-yellow-400" />,
+                  desc: "Linguagem de programação",
+                },
+                {
+                  name: "React Native",
+                  icon: <SiReactivex className="text-cyan-400" />,
+                  desc: "Apps mobile com React",
+                },
               ].map((tech, index) => (
-                <div
-                  key={index}
-                  className={`flex flex-col items-center space-y-3 bg-white/5 border border-${tech.color}/30 p-6 rounded-2xl hover:bg-${tech.color}/10 transition-all duration-300 hover:scale-105 hover:border-${tech.color}/50 group`}
-                >
-                  <span className="text-3xl group-hover:scale-110 transition-transform duration-300">
-                    {tech.icon}
-                  </span>
-                  <span
-                    className={`text-gray-300 font-semibold group-hover:text-${tech.color} transition-colors duration-300`}
-                  >
-                    {tech.name}
-                  </span>
-                </div>
+                // Tooltip acessível para cada tecnologia em aprendizado
+                <Tooltip key={tech.name}>
+                  <TooltipTrigger asChild>
+                    <div
+                      className="flex flex-col items-center space-y-2 xs:space-y-3 bg-white/5 border border-neon-purple/30 p-3 xs:p-4 md:p-6 rounded-2xl hover:bg-neon-purple/10 transition-all duration-300 hover:scale-105 hover:border-neon-purple/50 group focus:outline-none focus-visible:ring-2 focus-visible:ring-neon-purple min-w-0"
+                      tabIndex={0}
+                      aria-label={`Aprendendo: ${tech.name}`}
+                    >
+                      {/* Ícone */}
+                      <span className="text-2xl xs:text-3xl md:text-4xl group-hover:scale-110 transition-transform duration-300">
+                        {tech.icon}
+                      </span>
+                      {/* Nome */}
+                      <span className="text-xs xs:text-sm md:text-base text-gray-300 font-semibold group-hover:text-neon-purple transition-colors duration-300 text-center break-words">
+                        {tech.name}
+                      </span>
+                    </div>
+                  </TooltipTrigger>
+                  <TooltipContent side="top">{tech.desc}</TooltipContent>
+                </Tooltip>
               ))}
             </div>
-
+            {/* Mensagem motivacional */}
             <p className="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
               Sempre em busca de novas tecnologias e tendências para oferecer as
               melhores soluções aos meus projetos.
@@ -295,4 +289,6 @@ const Skills = () => {
   );
 };
 
+// Exportação do componente memoizado para performance
+const Skills = React.memo(SkillsComponent);
 export default Skills;
