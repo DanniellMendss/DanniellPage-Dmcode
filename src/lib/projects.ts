@@ -51,7 +51,7 @@ export const projects: Project[] = [
     featured: true,
     year: "2025",
     status: "Concluído",
-    duration: "1 mês",
+    duration: "20 dias",
   },
   {
     id: 3,
