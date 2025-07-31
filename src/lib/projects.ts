@@ -18,7 +18,7 @@ import Projeto1 from "@/Img/Projeto1.png";
 import Projeto2 from "@/Img/Projeto2.jpeg";
 import Projeto3 from "@/Img/Projeto3.jpeg";
 import Projeto4 from "@/Img/Projeto4.jpeg";
-import Projeto5 from "@/Img/Projeto5.png";
+import Projeto5 from "@/Img/Projeto5.jpeg";
 import Projeto6 from "@/Img/Projeto6.png";
 import Projeto7 from "@/Img/Projeto7.png";
 import Projeto8 from "@/Img/Projeto8.png";
@@ -41,20 +41,6 @@ export const projects: Project[] = [
   },
   {
     id: 2,
-    title: "Gerador de Senha",
-    description:
-      "Desenvolvi um gerador de senhas seguro e personalizável para quem precisa criar senhas fortes com facilidade!",
-    image: Projeto2,
-    technologies: ["HTML5", "CSS3", "JavaScript"],
-    category: "JavaScript",
-    liveUrl: "https://gerador-de-senha-five-weld.vercel.app/",
-    featured: true,
-    year: "2025",
-    status: "Concluído",
-    duration: "15 dias",
-  },
-  {
-    id: 3,
     title: "Painel Informativo COVID-19",
     description:
       "Projeto para simular um painel global de monitoramento da COVID-19, com foco em design moderno, dados visuais impactantes e experiência do usuários.",
@@ -68,34 +54,48 @@ export const projects: Project[] = [
     duration: "1 mês",
   },
   {
-    id: 4,
-    title: "API RESTful",
+    id: 3,
+    title: "Página de Torneio de Games – Projeto Ilustrativo",
     description:
-      "API robusta para gerenciamento de usuários com autenticação JWT e banco PostgreSQL. Documentação completa com Swagger e testes automatizados.",
+      "Uma landing page ilustrativa para promoção de torneios de gameplays! A página apresenta informações sobre o torneio, como data, hora, local, times, partidas e resultados.",
     image: Projeto4,
-    technologies: ["Node.js", "Express", "PostgreSQL", "JWT"],
-    category: "Node.js",
-    liveUrl: "#",
-    featured: false,
-    year: "2024",
+    technologies: ["HTML5", "CSS3", "JavaScript"],
+    category: "JavaScript",
+    liveUrl: "https://gamertorneio.vercel.app/",
+    featured: true,
+    year: "2025",
     status: "Concluído",
-    duration: "2 meses",
+    duration: "1 mês",
+  },
+  {
+    id: 4,
+    title: "Gerador de Senha",
+    description:
+      "Desenvolvi um gerador de senhas seguro e personalizável para quem precisa criar senhas fortes com facilidade!",
+    image: Projeto2,
+    technologies: ["HTML5", "CSS3", "JavaScript"],
+    category: "JavaScript",
+    liveUrl: "https://gerador-de-senha-five-weld.vercel.app/",
+    featured: true,
+    year: "2025",
+    status: "Concluído",
+    duration: "15 dias",
   },
   {
     id: 5,
-    title: "App Mobile React Native",
+    title: "Briefing Personalizado - Arquiteta",
     description:
-      "Aplicativo mobile para delivery com geolocalização e pagamentos. Interface intuitiva com tracking em tempo real e notificações push.",
+      "Landing page para apresentação de briefings personalizados para arquitetos. Inclui informações sobre o projeto, orçamento, cronograma e equipe.",
     image: Projeto5,
-    technologies: ["React Native", "Firebase", "Maps API"],
+    technologies: ["React", "TypeScript", "Tailwind CSS", "Node.js"],
     category: "React",
-    liveUrl: "#",
-    featured: false,
-    year: "2024",
-    status: "Concluído",
-    duration: "4 meses",
+    liveUrl: "https://vivianecastro.vercel.app/",
+    featured: true,
+    year: "2025",
+    status: "Em desenvolvimento",
+    duration: "2 meses",
   },
-  {
+  /*{
     id: 6,
     title: "Sistema de Blog",
     description:
@@ -132,9 +132,9 @@ export const projects: Project[] = [
     technologies: ["React", "Node.js", "Socket.io", "MongoDB"],
     category: "React",
     liveUrl: "#",
-    featured: true,
+    featured: false,
     year: "2024",
-    status: "Em desenvolvimento",
+    status: "Concluído",
     duration: "3 meses",
   },
   {
@@ -150,5 +150,5 @@ export const projects: Project[] = [
     year: "2023",
     status: "Concluído",
     duration: "3 semanas",
-  },
+  },*/
 ];

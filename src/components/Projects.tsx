@@ -6,7 +6,7 @@ import { projects } from "@/lib/projects";
 
 const ProjectsComponent = () => {
   // Seleciona apenas os 3 projetos em destaque
-  const filteredProjects = projects.filter((p) => p.featured).slice(0, 3);
+  const filteredProjects = projects.filter((p) => p.featured).slice(0, 6);
 
   return (
     // Seção principal dos projetos
@@ -35,7 +35,7 @@ const ProjectsComponent = () => {
               <div className="relative overflow-hidden">
                 <img
                   src={project.image}
-                  alt={project.title || 'Imagem do projeto'}
+                  alt={project.title || "Imagem do projeto"}
                   loading="lazy"
                   className="w-full h-48 object-cover object-center transition-transform duration-500 focus:outline-none focus:ring-2 focus:ring-neon-blue"
                   tabIndex={0}
@@ -46,7 +46,17 @@ const ProjectsComponent = () => {
                   </div>
                 )}
                 <div className="absolute top-4 right-4 glass px-2 py-1 rounded-full">
-                  <span className={`text-xs font-medium ${project.status === 'Concluído' ? 'text-neon-green' : project.status === 'Em desenvolvimento' ? 'text-neon-blue' : 'text-gray-400'}`}>{project.status}</span>
+                  <span
+                    className={`text-xs font-medium ${
+                      project.status === "Concluído"
+                        ? "text-neon-green"
+                        : project.status === "Em desenvolvimento"
+                        ? "text-neon-blue"
+                        : "text-gray-400"
+                    }`}
+                  >
+                    {project.status}
+                  </span>
                 </div>
                 {/* Removido overlay de hover */}
                 {/* Hover Actions removido */}
@@ -57,13 +67,35 @@ const ProjectsComponent = () => {
                 {/* Meta do projeto */}
                 <div className="flex items-center justify-between mb-3">
                   <div className="flex items-center space-x-2 text-xs text-gray-500">
-                    <span><svg width='12' height='12' fill='none' stroke='currentColor' strokeWidth='2' viewBox='0 0 24 24'><circle cx='12' cy='12' r='10' /><path d='M12 6v6l4 2' /></svg></span>
+                    <span>
+                      <svg
+                        width="12"
+                        height="12"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        viewBox="0 0 24 24"
+                      >
+                        <circle cx="12" cy="12" r="10" />
+                        <path d="M12 6v6l4 2" />
+                      </svg>
+                    </span>
                     <span>{project.year}</span>
                     <span>•</span>
                     <span>{project.duration}</span>
                   </div>
                   <span className="text-xs text-gray-500 flex items-center">
-                    <svg width='12' height='12' fill='none' stroke='currentColor' strokeWidth='2' viewBox='0 0 24 24'><path d='M16 18v-1a4 4 0 0 0-8 0v1' /><circle cx='12' cy='7' r='4' /></svg>
+                    <svg
+                      width="12"
+                      height="12"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M16 18v-1a4 4 0 0 0-8 0v1" />
+                      <circle cx="12" cy="7" r="4" />
+                    </svg>
                     {project.category}
                   </span>
                 </div>
