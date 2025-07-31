@@ -99,16 +99,28 @@ const AboutComponent = () => {
               {/* Stats */}
               <div className="grid grid-cols-3 gap-2 xs:gap-4 mt-8 pt-6 border-t border-white/10">
                 <div className="text-center">
-                  <div className="text-lg xs:text-2xl font-bold text-neon-blue">1+</div>
-                  <div className="text-xs xs:text-sm text-gray-400">Anos de Código</div>
+                  <div className="text-lg xs:text-2xl font-bold text-neon-blue">
+                    1+
+                  </div>
+                  <div className="text-xs xs:text-sm text-gray-400">
+                    Anos de Código
+                  </div>
                 </div>
                 <div className="text-center">
-                  <div className="text-lg xs:text-2xl font-bold text-neon-purple">15+</div>
-                  <div className="text-xs xs:text-sm text-gray-400">Projetos</div>
+                  <div className="text-lg xs:text-2xl font-bold text-neon-purple">
+                    5+
+                  </div>
+                  <div className="text-xs xs:text-sm text-gray-400">
+                    Projetos
+                  </div>
                 </div>
                 <div className="text-center">
-                  <div className="text-lg xs:text-2xl font-bold text-neon-green">1</div>
-                  <div className="text-xs xs:text-sm text-gray-400">Empresa</div>
+                  <div className="text-lg xs:text-2xl font-bold text-neon-green">
+                    1
+                  </div>
+                  <div className="text-xs xs:text-sm text-gray-400">
+                    Empresa
+                  </div>
                 </div>
               </div>
             </div>
@@ -130,7 +142,10 @@ const AboutComponent = () => {
                   <div
                     className={`relative z-10 w-10 xs:w-16 h-10 xs:h-16 rounded-full bg-gradient-to-r from-${event.color} to-neon-purple flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg`}
                   >
-                    <event.icon size={20} className="xs:size-6 text-dark-primary" />
+                    <event.icon
+                      size={20}
+                      className="xs:size-6 text-dark-primary"
+                    />
                   </div>
 
                   {/* Content */}
